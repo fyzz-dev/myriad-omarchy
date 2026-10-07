@@ -1,6 +1,6 @@
 # Myriad Omarchy
 
-A [Myriad](https://github.com/fyzz-dev/myriad) addon that adds an "Omarchy" theme: it always matches your active
+A [Myriad](https://myriadclient.dev/) addon that adds an "Omarchy" theme: it always matches your active
 [Omarchy](https://omarchy.org) system theme (colours, borders and rounding), and switches whenever you run
 `omarchy-theme-set`. On a fresh Myriad install on Omarchy it's the theme you start with. On systems without Omarchy it
 does nothing.
