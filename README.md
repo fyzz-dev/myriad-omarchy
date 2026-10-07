@@ -18,10 +18,10 @@ flatpak override --user --filesystem=~/.local/state/omarchy:ro org.prismlauncher
 
 ## Build
 
-1. In the Myriad repository, run `./gradlew publishToMavenLocal`.
-2. Here, `./gradlew build` writes the jar to `build/libs/`. `./gradlew runClient` starts the game with Myriad,
-   Myriad Essentials and this addon.
-3. `./gradlew publishToMavenLocal` here too if you want the Myriad repo's dev client to load it.
+`./gradlew build` writes the jar to `build/libs/`; `./gradlew runClient` starts the game with Myriad, Myriad
+Essentials and this addon. Myriad comes from its maven (`https://fyzz-dev.github.io/myriad`). To build against
+unreleased Myriad changes, run `./gradlew publishToMavenLocal` in the Myriad repository and add `mavenLocal()` to
+the repositories here. `./gradlew publishToMavenLocal` here makes the Myriad repo's dev client load this addon.
 
 ## How it works
 

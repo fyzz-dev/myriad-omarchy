@@ -1,5 +1,5 @@
 plugins {
-	id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
 }
 
 version = project.mod_version
@@ -10,20 +10,22 @@ base {
 }
 
 repositories {
-	// Myriad isn't on a public maven yet: run `./gradlew publishToMavenLocal` in the Myriad repo once (and again
-	// after updating it) and Gradle picks it up from ~/.m2.
-	mavenLocal()
+	// Myriad's releases. To build against unreleased Myriad changes, run `./gradlew publishToMavenLocal` there and add
+	// mavenLocal() here.
+	maven {
+		name = "Myriad"
+		url = "https://fyzz-dev.github.io/myriad"
+	}
 }
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
-	modImplementation "dev.myriad:myriad:${project.myriad_version}"
+	implementation "dev.myriad:myriad:${project.myriad_version}"
 	// Only for `./gradlew runClient`, so the menu has something in it while you test.
-	modLocalRuntime "dev.myriad:myriad-essentials:${project.myriad_version}"
+	localRuntime "dev.myriad:myriad-essentials:${project.myriad_version}"
 }
 
 loom {
@@ -44,14 +46,14 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 21
+	it.options.release = 25
 	it.options.encoding = "UTF-8"
 }
 
 java {
 	withSourcesJar()
-	sourceCompatibility = JavaVersion.VERSION_21
-	targetCompatibility = JavaVersion.VERSION_21
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
 }
 
 // `./gradlew publishToMavenLocal` makes it available to other projects (the Myriad repo's dev client uses it if present).
