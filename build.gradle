@@ -25,7 +25,7 @@ dependencies {
 
 	implementation "dev.myriad:myriad:${project.myriad_version}"
 	// Only for `./gradlew runClient`, so the menu has something in it while you test.
-	localRuntime "dev.myriad:myriad-essentials:${project.myriad_version}"
+	localRuntime "dev.myriad:myriad-essentials:${project.essentials_version}"
 }
 
 loom {
